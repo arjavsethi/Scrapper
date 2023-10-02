@@ -14,16 +14,17 @@ const getProductCode = require('./utils/getProductCode.js');
       
       page.on('request', (req) => {
         //req.resourceType() == 'stylesheet' ||req.resourceType() == 'font' || 
-          if( req.resourceType() == 'image'){
-              req.abort();
-          }
-          else {
-              req.continue();
-          }
+          // if( req.resourceType() == 'image'){
+          //     req.abort();
+          // }
+          // else {
+          //     req.continue();
+          // }
       });
       
       await page.goto("https://www.amazon.in/",{waitUntil: "networkidle2"});
       try {
+        await page.waitForSelector("#twotabsearchtextbox");
         await page.type("#twotabsearchtextbox", productName);
       } catch (error) {
         
@@ -37,7 +38,7 @@ const getProductCode = require('./utils/getProductCode.js');
       
       
       
-       let  products = await page.evaluate(() => {
+       let  products = await page.evaluate((noOfProduct) => {
           console.log("evaluating...")
           let results = [];
          
