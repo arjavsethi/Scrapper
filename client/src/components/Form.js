@@ -128,12 +128,7 @@ export const Form = () => {
           placeholder="Number of product"
           className="input-text"
         />
-        <button
-          type="submit"
-          className="prose prose-base text-white cursor-pointer px-5 py-1 rounded-full bg-gradient-to-r from-emerald-300 to-emerald-400 bg-opacity-50 hover:bg-opacity-80"
-        >
-          SCRAP
-        </button>
+     
 
         <button
           onClick={onSubmit}

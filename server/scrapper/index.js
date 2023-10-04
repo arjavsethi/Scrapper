@@ -14,12 +14,12 @@ const getProductCode = require('./utils/getProductCode.js');
       
       page.on('request', (req) => {
         //req.resourceType() == 'stylesheet' ||req.resourceType() == 'font' || 
-          // if( req.resourceType() == 'image'){
-          //     req.abort();
-          // }
-          // else {
-          //     req.continue();
-          // }
+          if( req.resourceType() == 'image'){
+              req.abort();
+          }
+          else {
+              req.continue();
+          }
       });
       
       await page.goto("https://www.amazon.in/",{waitUntil: "networkidle2"});
@@ -45,7 +45,7 @@ const getProductCode = require('./utils/getProductCode.js');
           const items = document.querySelectorAll(".s-result-item .s-card-border");
          
           
-          for (let i = 0; i < noOfProduct; i++ ) {
+          for (let i = 0; i < 10; i++ ) {
         
             const item = items[i];
             let title , price , cents , image , url , newUrl , asin ,rating,originalPrice,discount,noOFReviews, isDotd, dotdPrice,isFreeDelivery;

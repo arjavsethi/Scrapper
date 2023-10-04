@@ -11,6 +11,7 @@ const processData =async(data,page)=>{
           
         } catch (error) {
           console.log(error + " "+ "Error in processData")
+          finalProductData.push({...item})
           continue;
         }
        
